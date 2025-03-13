@@ -4,55 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>LMS - Home</title>
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 </head>
 
 <body>
-    <div>
-        <h3 class="heading"> Hi.<br>
-            Welcome to my project.
-        </h3>
-        <table class="table" border="1">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-            <tr>
-                <td>2002060</td>
-                <td>Rajesh Biswas</td>
-                <td>22</td>
-            </tr>
-            <tr>
-                <td>2002061</td>
-                <td>Maynul Islam</td>
-                <td>23</td>
-            </tr>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">LMS</h1>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="course.php">Courses</a></li>
+                <li><a href="course-management.php">Course_Management</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="login.php" class="btn">Login</a></li>
+                <li><a href="signup.php" class="btn">signup</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        </table>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h2>Learn from the Best Courses Online</h2>
+            <p>Join thousands of students on our learning platform.</p>
+            <a href="#courses" class="btn">Browse Courses</a>
+        </div>
+    </header>
 
-        <table class="table" border="1">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-            <tr>
-                <td>2002060</td>
-                <td>Rajesh Biswas</td>
-                <td>22</td>
-            </tr>
-            <tr>
-                <td>2002061</td>
-                <td>Maynul Islam</td>
-                <td>23</td>
-            </tr>
+    <!-- Featured Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2>Featured Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <img src="course1.jpg" alt="Course 1">
+                    <h3>Web Development</h3>
+                    <p>Learn HTML, CSS, JavaScript, and more.</p>
+                    <a href="#" class="btn">Enroll Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="course2.jpg" alt="Course 2">
+                    <h3>Python for Beginners</h3>
+                    <p>Start coding in Python with this beginner-friendly course.</p>
+                    <a href="#" class="btn">Enroll Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="course3.jpg" alt="Course 3">
+                    <h3>Data Science</h3>
+                    <p>Master data analysis and machine learning techniques.</p>
+                    <a href="#" class="btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </table>
-
-    </div>
-
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 LMS. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
