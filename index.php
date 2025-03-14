@@ -20,6 +20,7 @@
                 <li><a href="courses.php">Courses</a></li>
                 <li><a href="course-management.php">Course_Management</a></li>
                 <li><a href="about.php">About</a></li>
+                <li><a href="user.php">User</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="login.php" class="btn">Login</a></li>
                 <li><a href="signup.php" class="btn">Signup</a></li>
