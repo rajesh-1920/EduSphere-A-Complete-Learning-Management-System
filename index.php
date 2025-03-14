@@ -17,12 +17,13 @@
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="course.php">Courses</a></li>
+                <li><a href="courses.php">Courses</a></li>
                 <li><a href="course-management.php">Course_Management</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="login.php" class="btn">Login</a></li>
-                <li><a href="signup.php" class="btn">signup</a></li>
+                <li><a href="signup.php" class="btn">Signup</a></li>
+                <li><a href="logout.php" class="btn">Logout</a></li>
             </ul>
         </div>
     </nav>
