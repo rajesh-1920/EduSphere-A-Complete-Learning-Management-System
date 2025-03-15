@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LMS - Home</title>
-    <!-- <link rel="stylesheet" href="css/index.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -32,14 +31,14 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <h2>Learn from the Best Courses Online</h2>
-            <p>Join thousands of students on our learning platform.</p>
+            <h2 style=" color : black">Learn from the Best Courses Online</h2>
+            <p style=" color : black">Join thousands of students on our learning platform.</p>
             <a href="#courses" class="btn">Browse Courses</a>
         </div>
     </header>
 
     <!-- Featured Courses Section -->
-    <section id="courses" class="courses">
+    <!-- <section id="courses" class="courses">
         <div class="container">
             <h2>Featured Courses</h2>
             <div class="course-grid">
@@ -63,7 +62,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="footer">

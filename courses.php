@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
-    <!-- <link rel="stylesheet" href="css/courses.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="css/courses.css">
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -21,7 +22,7 @@
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </div>
-    
+
     <!-- Main Content -->
     <div class="main-content">
         <header>
@@ -40,15 +41,18 @@
                 <img src="course2.jpg" alt="Course Image">
                 <h3>PHP for Beginners</h3>
                 <p>Master the basics of PHP development.</p>
+                <p><strong>Price:</strong> $50</p>
                 <button>Enroll Now</button>
             </div>
             <div class="course">
                 <img src="course3.jpg" alt="Course Image">
                 <h3>JavaScript Essentials</h3>
                 <p>Learn JavaScript fundamentals and beyond.</p>
+                <p><strong>Price:</strong> $50</p>
                 <button>Enroll Now</button>
             </div>
         </section>
     </div>
 </body>
+
 </html>
