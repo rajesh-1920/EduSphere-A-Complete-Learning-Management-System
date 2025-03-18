@@ -2,7 +2,7 @@
 <div class="sidebar">
     <ul>
         <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fas fa-book"></i> My Courses</a></li>
+        <li><a href="#"><i class="fas fa-book"></i>Courses</a></li>
         <li><a href="#"><i class="fas fa-tasks"></i> Assignments</a></li>
         <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
         <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>

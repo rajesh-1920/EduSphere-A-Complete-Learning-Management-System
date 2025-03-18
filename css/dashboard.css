@@ -5,54 +5,25 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    background-color: #f8f9fa;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    background: #333;
-    color: white;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-}
-
-.sidebar h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.sidebar ul li a i {
-    margin-right: 10px;
-}
-
-.sidebar ul li:hover {
-    background: #555;
-    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 /* Main Content */
 .main-content {
-    margin-left: 250px;
+    margin-left: 10vw;
+    padding: 20px;
+    padding-bottom: 0px;
+    width: 90vw;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* Hero Content */
+.hero-content {
     padding: 20px;
     width: calc(100% - 250px);
 }

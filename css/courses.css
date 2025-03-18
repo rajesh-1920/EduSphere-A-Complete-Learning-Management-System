@@ -11,11 +11,14 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 250px;
+    margin-left: 10vw;
     padding: 20px;
+    padding-bottom: 0px;
     width: calc(100% - 250px);
+    width: 100%;
 }
 
+/* Hero Section */
 header {
     background: white;
     padding: 20px;

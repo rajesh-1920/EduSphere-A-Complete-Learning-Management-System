@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="template/css/navbar.css">
 </head>
 
 <body>
-    
+    <?php
+    include_once("template/navbar.php");
+    ?>
     <!-- Main Content -->
     <div class="main-content">
+        <!-- Hero Section -->
         <header>
             <h2>Available Courses</h2>
             <p>Browse and enroll in courses</p>

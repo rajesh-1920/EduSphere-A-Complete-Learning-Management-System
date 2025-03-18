@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Navbar & Sidebar -->
     <?php
     include_once("template/navbar.php");
     ?>
