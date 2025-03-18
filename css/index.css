@@ -8,11 +8,6 @@ body {
     box-sizing: border-box;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-}
-
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -22,35 +17,13 @@ body {
     border-radius: 5px;
 }
 
-/* Navbar */
-.navbar {
-    background: #333;
-    color: white;
-    padding: 15px 0;
-}
-
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.navbar ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
+/* Main Content */
+.main-content {
+    margin-left: 10vw;
+    padding: 20px;
+    padding-bottom: 0px;
+    width: calc(100% - 250px);
+    width: 100%;
 }
 
 /* Hero Section */
@@ -96,6 +69,7 @@ body {
     background: #222;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 15px 0;
     margin-top: 20px;
+    margin-bottom: 0;
 }
