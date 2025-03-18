@@ -27,6 +27,10 @@
                 <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
+        <!-- Footer -->
+        <?php
+        include_once("template/footer.php");
+        ?>
     </div>
 </body>
 

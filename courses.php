@@ -43,6 +43,10 @@
                 <button>Enroll Now</button>
             </div>
         </section>
+        <!-- Footer -->
+        <?php
+        include_once("template/footer.php");
+        ?>
     </div>
 </body>
 

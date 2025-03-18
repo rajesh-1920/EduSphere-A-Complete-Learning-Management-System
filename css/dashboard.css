@@ -10,13 +10,16 @@ body {
 
 /* Main Content */
 .main-content {
+    margin: 0;
     margin-left: 10vw;
     padding: 20px;
     padding-bottom: 0px;
     width: 90vw;
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     align-items: center;
     height: 100vh;
     background-color: #f8f9fa;
@@ -25,7 +28,7 @@ body {
 /* Hero Content */
 .hero-content {
     padding: 20px;
-    width: calc(100% - 250px);
+    width: 100%;
 }
 
 header {

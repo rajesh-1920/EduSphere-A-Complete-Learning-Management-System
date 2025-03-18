@@ -17,7 +17,8 @@ body {
     width: 90vw;
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
     height: 100vh;
     background-color: #f8f9fa;

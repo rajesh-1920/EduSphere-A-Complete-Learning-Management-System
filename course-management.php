@@ -61,6 +61,10 @@
                 </table>
             </section>
         </div>
+        <!-- Footer -->
+        <?php
+        include_once("template/footer.php");
+        ?>
     </div>
 </body>
 

@@ -23,6 +23,10 @@
             <p>Our mission is to make education accessible, engaging, and effective through innovative technology and interactive learning.</p>
             <p>Join us today and start your learning journey!</p>
         </div>
+        <!-- Footer -->
+        <?php
+        include_once("template/footer.php");
+        ?>
     </div>
 </body>
 
