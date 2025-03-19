@@ -1,3 +1,8 @@
+<?php
+if (isset($_GET['signup']) && $_GET["signup"] == "success") {
+    $success_message = "Signup successful! Please log in";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +16,12 @@
 <body>
     <!-- Login Form -->
     <section class="auth-container">
+        <div>
+            <?php
+            if (isset($success_message)) {
+                echo $success_message;
+            } ?>
+        </div>
         <div class="form-box">
             <h2>Login</h2>
             <form action="login.php" method="POST">

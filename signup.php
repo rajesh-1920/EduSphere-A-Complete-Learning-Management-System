@@ -3,7 +3,7 @@ include("function/login-signup.php");
 $obj_login_signup = new login_signup();
 if (isset($_POST["add_signup"])) {
     $is_insert = $obj_login_signup->insert_signup_data($_POST);
-    header("Location: login.php");
+    header("Location: login.php?signup=success");
     exit();
 }
 ?>
