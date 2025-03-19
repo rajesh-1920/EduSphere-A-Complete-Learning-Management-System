@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 class login_signup
 {
     private $conn;
@@ -25,7 +28,35 @@ class login_signup
                 return "success";
             }
         } else {
-            return "Invalid";
+            return "Fail";
+        }
+    }
+
+    public function login_section($data)
+    {
+        $email = $data['email'];
+        $pass = $data['password'];
+        $type = ($data['role'] == "instructor" ? 1 : 2);
+        if (!empty($email)) {
+            $query = "SELECT * FROM info WHERE info.Email='$email'";
+            if (mysqli_query($this->conn, $query)) {
+                $login_messege = mysqli_query($this->conn, $query);
+                $pass1 = "";
+                $type1 = "";
+                while ($temp = mysqli_fetch_assoc($login_messege)) {
+                    $pass1 = $temp["pass"];
+                    $type1 = $temp["type"];
+                }
+                if ($pass1 != $pass) {
+                    return "*Invalid password or username Please try again";
+                } else if ($type != $type1) {
+                    return "*Invalid username or type Please try again";
+                } else {
+                    return "success";
+                }
+            }
+        } else {
+            return "*Invalid password or username Please try again";
         }
     }
 }

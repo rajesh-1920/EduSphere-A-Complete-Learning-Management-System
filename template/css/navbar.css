@@ -62,12 +62,16 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+}
+
+.navbar ul li .logo {
+    height: 18px;
 }
 
 .navbar ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .navbar ul li a {

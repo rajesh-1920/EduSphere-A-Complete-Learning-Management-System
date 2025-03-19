@@ -51,16 +51,29 @@ body {
     margin-bottom: 20px;
 }
 
-.form-box input, .form-box select {
-    width: 90%;
+.form-box input,
+.form-box select {
+    width: 93%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.form-box p {
+.form-box select {
+    width: 100%;
+    text-align: center;
+}
+
+.form-box .sign {
     margin-top: 10px;
+}
+
+.form-box .messege {
+    margin-top: 0px;
+    padding-bottom: 5px;
+    color: red;
+    font-size: small;
 }
 
 .form-box a {
