@@ -29,37 +29,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Navbar */
-.navbar {
-    background: #333;
-    color: white;
-    padding: 15px 0;
-}
-
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.navbar ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
 /* Authentication Forms */
 .auth-container {
     display: flex;
@@ -82,7 +51,7 @@ body {
 }
 
 .form-box input, .form-box select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -96,13 +65,4 @@ body {
 .form-box a {
     color: #007bff;
     text-decoration: none;
-}
-
-/* Footer */
-.footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
 }

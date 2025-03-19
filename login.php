@@ -9,20 +9,6 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">LMS</h1>
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="courses.php">Courses</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="signup.php" class="btn">signup</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <!-- Login Form -->
     <section class="auth-container">
         <div class="form-box">
@@ -35,11 +21,6 @@
             </form>
         </div>
     </section>
-
-    <!-- Footer -->
-    <?php
-    include_once("template/footer.php");
-    ?>
 </body>
 
 </html>
