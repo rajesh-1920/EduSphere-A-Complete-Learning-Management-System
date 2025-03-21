@@ -9,7 +9,7 @@ class login_signup
     {
         $dbhost = "localhost";
         $dbuser = "root";
-        $dbname = "temp";
+        $dbname = "edusphere";
         $dbpass = "";
         $this->conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
         if (!isset($this->conn)) {
@@ -34,29 +34,33 @@ class login_signup
 
     public function login_section($data)
     {
-        $email = $data['email'];
+        $userid = $data['userid'];
         $pass = $data['password'];
-        $type = ($data['role'] == "instructor" ? 1 : 2);
-        if (!empty($email)) {
-            $query = "SELECT * FROM info WHERE info.Email='$email'";
+        if (!empty($userid)) {
+            if ($data['role'] == "admin")
+                $query = "SELECT * FROM admin WHERE admin.userid='$userid'";
+            if ($data['role'] == "instructor")
+                $query = "SELECT * FROM instructor WHERE instructor.userid='$userid'";
+            if ($data['role'] == "student")
+                $query = "SELECT * FROM student WHERE student.userid='$userid'";
             if (mysqli_query($this->conn, $query)) {
                 $login_messege = mysqli_query($this->conn, $query);
                 $pass1 = "";
-                $type1 = "";
                 while ($temp = mysqli_fetch_assoc($login_messege)) {
                     $pass1 = $temp["pass"];
-                    $type1 = $temp["type"];
                 }
-                if ($pass1 != $pass) {
-                    return "*Invalid password or username Please try again";
-                } else if ($type != $type1) {
-                    return "*Invalid username or type Please try again";
+                if ($pass1 != "") {
+                    if ($pass1 != $pass) {
+                        return "*Invalid password or user id Please try again";
+                    } else {
+                        return "success";
+                    }
                 } else {
-                    return "success";
+                    return "*Invalid user id or role Please try again";
                 }
             }
         } else {
-            return "*Invalid password or username Please try again";
+            return "*Invalid or empty user id Please try again";
         }
     }
 }

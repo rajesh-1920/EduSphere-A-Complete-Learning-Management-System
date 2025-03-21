@@ -36,11 +36,12 @@ if (isset($_POST["login"])) {
         <div class="form-box">
             <h2>Login</h2>
             <form action="" method="POST">
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="userid" placeholder="Enter user id" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <select name="role">
                     <option value="student">Student</option>
                     <option value="instructor">Instructor</option>
+                    <option value="admin">Admin</option>
                 </select>
                 <div class="messege">
                     <?php
