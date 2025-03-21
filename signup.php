@@ -1,11 +1,11 @@
 <?php
 include("function/login-signup.php");
 $signup_obj = new login_signup();
-// if (isset($_POST["signup"])) {
-//     $is_insert = $signup_obj->insert_signup_data($_POST);
-//     header("Location: login.php?signup=success");
-//     exit();
-// }
+if (isset($_POST["signup"])) {
+    $is_insert = $signup_obj->insert_signup_data($_POST);
+    header("Location: login.php?signup=$is_insert");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +27,11 @@ $signup_obj = new login_signup();
                 <input type="text" name="name" placeholder="Full Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
+                <input type="number" name="std-id" placeholder="Student Id" required>
                 <select name="role">
                     <option value="student">Student</option>
                     <option value="instructor">Instructor</option>
+                    <option value="admin">Admin</option>
                 </select>
                 <button type="submit" class="btn" name="signup">Signup</button>
                 <p>Already have an account? <a href="login.php">Login</a></p>

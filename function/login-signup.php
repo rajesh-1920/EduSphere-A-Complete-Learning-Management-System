@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\type;
-
 class login_signup
 {
     private $conn;
@@ -16,26 +13,69 @@ class login_signup
             die("Database connection error");
         }
     }
+    // for sign up -------------------------------------
     public function insert_signup_data($data)
     {
-        $name = $data['name'];
-        $email = $data['email'];
-        $pass = $data['password'];
-        $type = ($data['role'] == "instructor" ? 1 : 2);
-        if (!empty($name) && !empty($email) && !empty($pass) && !empty($type)) {
-            $query = "INSERT INTO info (Name,Email,pass,type) VALUES('$name','$email','$pass',$type);";
-            if (mysqli_query($this->conn, $query)) {
-                return "success";
+        $name = trim($data['name']);
+        $email = trim($data['email']);
+        $pass = trim($data['password']);
+        $std_id = "" . $data['std-id'];
+        // studetnt account create -------------------------------
+        if ($data['role'] == "student") {
+            $char = "";
+            for ($i = strlen($name) - 1; $i >= 0; $i--) {
+                if ($name[$i] >= 'A' && $name[$i] <= 'Z') {
+                    $char = $name[$i];
+                    break;
+                }
             }
-        } else {
-            return "Fail";
+            $userid = substr($name, 0, 1) . $char . substr($std_id, -4);
+            $query = "INSERT INTO student (id,name,userid,email,pass) 
+                        VALUES($std_id,'$name','$userid','$email','$pass');";
+            if (mysqli_query($this->conn, $query)) {
+                return $userid;
+            } else {
+                return "Fail";
+            }
+        }
+        // instructor account create ------------------------------------
+        if ($data['role'] == "instructor") {
+            $id = 0;
+            $query = "SELECT * FROM instructor ORDER BY id DESC LIMIT 1";
+            if (mysqli_query($this->conn, $query)) {
+                $temp = mysqli_query($this->conn, $query);
+                $value = mysqli_fetch_assoc($temp);
+                $id = $value['id'];
+            }
+            $id++;
+            $id = "" . $id;
+            while (strlen($id) < 4) {
+                $id = "0" . $id;
+            }
+            $char = "";
+            for ($i = strlen($name) - 1; $i >= 0; $i--) {
+                if ($name[$i] >= 'A' && $name[$i] <= 'Z') {
+                    $char = $name[$i];
+                    break;
+                }
+            }
+            $userid = substr($name, 0, 1) . $char . $id;
+            $query = "INSERT INTO instructor (name,userid,email,pass) 
+                        VALUES('$name','$userid','$email','$pass');";
+            if (mysqli_query($this->conn, $query)) {
+                return $userid;
+            } else {
+                return "Fail";
+            }
         }
     }
 
+
+    // for login --------------------------------------------
     public function login_section($data)
     {
-        $userid = $data['userid'];
-        $pass = $data['password'];
+        $userid = trim($data['userid']);
+        $pass = trim($data['password']);
         if (!empty($userid)) {
             if ($data['role'] == "admin")
                 $query = "SELECT * FROM admin WHERE admin.userid='$userid'";
