@@ -22,28 +22,28 @@ require_once 'header.php';
             <li><a href="settings.php"><i class="fas fa-cog"></i> Settings</a></li>
         </ul>
     </div>
-    
+
     <div class="main-content">
         <div class="page-header">
             <h2>Welcome back, <?php echo $user['full_name']; ?>!</h2>
             <a href="courses.php" class="btn btn-primary">Browse Courses</a>
         </div>
-        
+
         <div class="card" style="margin-bottom: 30px;">
             <div class="card-body">
                 <h3 style="margin-bottom: 20px;">Your Learning Progress</h3>
-                
+
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                     <div class="card" style="text-align: center; padding: 20px;">
                         <h4 style="margin-bottom: 10px;">Enrolled Courses</h4>
                         <p style="font-size: 32px; font-weight: bold; color: var(--primary-color);"><?php echo count($enrolledCourses); ?></p>
                     </div>
-                    
+
                     <div class="card" style="text-align: center; padding: 20px;">
                         <h4 style="margin-bottom: 10px;">Courses in Progress</h4>
                         <p style="font-size: 32px; font-weight: bold; color: var(--primary-color);"><?php echo count($enrolledCourses); ?></p>
                     </div>
-                    
+
                     <div class="card" style="text-align: center; padding: 20px;">
                         <h4 style="margin-bottom: 10px;">Completed Courses</h4>
                         <p style="font-size: 32px; font-weight: bold; color: var(--primary-color);">0</p>
@@ -51,20 +51,20 @@ require_once 'header.php';
                 </div>
             </div>
         </div>
-        
+
         <div class="card" style="margin-bottom: 30px;">
             <div class="card-body">
                 <div class="page-header">
                     <h3>Your Courses</h3>
                     <a href="my_courses.php" class="btn btn-outline">View All</a>
                 </div>
-                
+
                 <?php if (empty($enrolledCourses)): ?>
                     <p>You haven't enrolled in any courses yet.</p>
                     <a href="courses.php" class="btn btn-primary">Browse Courses</a>
                 <?php else: ?>
                     <div class="course-grid">
-                        <?php foreach (array_slice($enrolledCourses, 0, 4) as $course): 
+                        <?php foreach (array_slice($enrolledCourses, 0, 4) as $course):
                             $progress = getCourseProgress($userId, $course['course_id']);
                         ?>
                             <div class="card">
@@ -72,7 +72,7 @@ require_once 'header.php';
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $course['title']; ?></h5>
                                     <p class="card-text"><?php echo substr($course['description'], 0, 100) . '...'; ?></p>
-                                    
+
                                     <div style="margin-bottom: 15px;">
                                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                                             <small>Progress</small>
@@ -92,19 +92,19 @@ require_once 'header.php';
                 <?php endif; ?>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="card-body">
                 <div class="page-header">
                     <h3>Upcoming Assignments</h3>
                     <a href="assignments.php" class="btn btn-outline">View All</a>
                 </div>
-                
+
                 <?php
                 // Get upcoming assignments (in a real app, you would query assignments with due dates)
                 $upcomingAssignments = [];
                 ?>
-                
+
                 <?php if (empty($upcomingAssignments)): ?>
                     <p>No upcoming assignments.</p>
                 <?php else: ?>
