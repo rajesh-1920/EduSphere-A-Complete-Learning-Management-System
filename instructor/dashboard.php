@@ -51,12 +51,12 @@ $pendingAssignments = $db->query("
 ")->fetch_all(MYSQLI_ASSOC);
 
 $pageTitle = 'Instructor Dashboard';
-require_once '../../includes/header.php';
+require_once '../includes/header.php';
 ?>
 
 <div class="instructor-dashboard">
     <h1>Welcome, <?php echo $_SESSION['first_name']; ?></h1>
-    
+
     <div class="stats-grid">
         <div class="stat-card">
             <h3>Your Courses</h3>
@@ -68,7 +68,7 @@ require_once '../../includes/header.php';
             <p><?php echo $totalStudents; ?></p>
         </div>
     </div>
-    
+
     <div class="dashboard-section">
         <h2>Your Courses</h2>
         <?php if (!empty($courses)): ?>
@@ -96,7 +96,7 @@ require_once '../../includes/header.php';
             <p>You don't have any courses yet. <a href="courses/add_course.php">Create your first course</a></p>
         <?php endif; ?>
     </div>
-    
+
     <div class="dashboard-section">
         <h2>Recent Announcements</h2>
         <?php if (!empty($announcements)): ?>
@@ -126,7 +126,7 @@ require_once '../../includes/header.php';
             <p>No announcements yet. <a href="announcements/add_announcement.php">Create your first announcement</a></p>
         <?php endif; ?>
     </div>
-    
+
     <div class="dashboard-section">
         <h2>Assignments to Grade</h2>
         <?php if (!empty($pendingAssignments)): ?>
@@ -158,4 +158,4 @@ require_once '../../includes/header.php';
     </div>
 </div>
 
-<?php require_once '../../includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>

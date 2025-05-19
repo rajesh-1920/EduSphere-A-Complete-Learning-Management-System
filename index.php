@@ -137,12 +137,6 @@ require_once 'includes/header.php';
         <div class="courses-slider">
             <?php foreach ($featuredCourses as $course): ?>
                 <div class="course-card">
-                    <div class="course-badge">Popular</div>
-                    <?php if ($course['thumbnail']): ?>
-                        <div class="course-image">
-                            <img src="<?php echo SITE_URL; ?>/uploads/course_thumbnails/<?php echo $course['thumbnail']; ?>" alt="<?php echo htmlspecialchars($course['title']); ?>">
-                        </div>
-                    <?php endif; ?>
                     <div class="course-content">
                         <div class="course-meta">
                             <span class="course-students"><i class="fas fa-users"></i> <?php echo $course['students']; ?> students</span>
