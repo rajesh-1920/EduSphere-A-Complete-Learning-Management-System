@@ -1,8 +1,8 @@
 <?php
-require_once '../../includes/config.php';
-require_once '../../includes/auth_check.php';
-require_once '../../includes/db_connect.php';
-require_once '../../includes/functions.php';
+require_once '../includes/config.php';
+require_once '../includes/auth_check.php';
+require_once '../includes/db_connect.php';
+require_once '../includes/functions.php';
 checkRole(['student']);
 
 $studentId = $_SESSION['user_id'];
@@ -42,12 +42,12 @@ $announcements = $db->query("
 ")->fetch_all(MYSQLI_ASSOC);
 
 $pageTitle = 'Student Dashboard';
-require_once '../../includes/header.php';
+require_once '../includes/header.php';
 ?>
 
 <div class="student-dashboard">
     <h1>Welcome, <?php echo $_SESSION['first_name']; ?></h1>
-    
+
     <div class="dashboard-section">
         <h2>Your Courses</h2>
         <?php if (!empty($courses)): ?>
@@ -73,7 +73,7 @@ require_once '../../includes/header.php';
             <p>You are not enrolled in any courses yet. <a href="courses/enroll.php">Browse available courses</a></p>
         <?php endif; ?>
     </div>
-    
+
     <div class="dashboard-columns">
         <div class="column">
             <h2>Upcoming Assignments</h2>
@@ -103,7 +103,7 @@ require_once '../../includes/header.php';
                 <p>No upcoming assignments.</p>
             <?php endif; ?>
         </div>
-        
+
         <div class="column">
             <h2>Recent Announcements</h2>
             <?php if (!empty($announcements)): ?>
@@ -128,4 +128,4 @@ require_once '../../includes/header.php';
     </div>
 </div>
 
-<?php require_once '../../includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>

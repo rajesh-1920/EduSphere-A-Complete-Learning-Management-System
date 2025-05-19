@@ -15,7 +15,7 @@ $enrollmentsCount = $db->query("SELECT COUNT(*) FROM enrollments")->fetch_row()[
 
 <div class="dashboard">
     <h1>Admin Dashboard</h1>
-    
+
     <div class="stats-grid">
         <div class="stat-card">
             <h3>Total Users</h3>
@@ -33,7 +33,7 @@ $enrollmentsCount = $db->query("SELECT COUNT(*) FROM enrollments")->fetch_row()[
             <a href="reports/enrollment_report.php">View Report</a>
         </div>
     </div>
-    
+
     <div class="recent-activity">
         <h2>Recent Activity</h2>
         <table>
@@ -45,7 +45,6 @@ $enrollmentsCount = $db->query("SELECT COUNT(*) FROM enrollments")->fetch_row()[
                 </tr>
             </thead>
             <tbody>
-                <!-- Would be populated from a real activity log table -->
                 <tr>
                     <td>Just now</td>
                     <td>System</td>
