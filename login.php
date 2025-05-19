@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password_hash'])) {
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['profile_picture'] = $user['profile_picture'] ?? 'default.png';
-            
+
             // Redirect to appropriate dashboard
             $redirectUrl = isset($_SESSION['redirect_url']) ? $_SESSION['redirect_url'] : $user['role'] . '/dashboard.php';
             unset($_SESSION['redirect_url']);
