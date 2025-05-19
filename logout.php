@@ -1,13 +1,10 @@
 <?php
-require_once 'config.php';
+require_once 'includes/config.php';
+require_once 'includes/functions.php';
 
-// Unset all session variables
-$_SESSION = array();
-
-// Destroy the session
+session_start();
+session_unset();
 session_destroy();
 
-// Redirect to login page
-header("Location: login.php");
-exit();
+redirect('login.php');
 ?>

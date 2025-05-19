@@ -1,7 +1,9 @@
 <?php
-require_once 'includes/config.php';
-require_once 'includes/db_connect.php';
-require_once 'includes/functions.php';
+require_once '../../includes/config.php';
+require_once '../../includes/auth_check.php';
+require_once '../../includes/db_connect.php';
+require_once '../../includes/functions.php';
+checkRole(['admin']);
 
 $errors = [];
 
@@ -12,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = $_POST['confirm_password'];
     $firstName = sanitize($_POST['first_name']);
     $lastName = sanitize($_POST['last_name']);
-    $role = 'student'; // Default role for new registrations
+    $role = sanitize($_POST['role']);
 
     // Validate inputs
     if (empty($username)) $errors[] = 'Username is required';
@@ -21,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($password !== $confirmPassword) $errors[] = 'Passwords do not match';
     if (empty($firstName)) $errors[] = 'First name is required';
     if (empty($lastName)) $errors[] = 'Last name is required';
+    if (empty($role)) $errors[] = 'Role is required';
 
     // Check if username or email already exists
     $stmt = $db->prepare("SELECT user_id FROM users WHERE username = ? OR email = ?");
@@ -31,26 +34,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Username or email already exists';
     }
 
+    // Handle profile picture upload
+    $profilePicture = 'default.png';
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+        $uploadResult = uploadFile($_FILES['profile_picture'], PROFILE_PICTURE_PATH);
+        if ($uploadResult['success']) {
+            $profilePicture = $uploadResult['filename'];
+        } else {
+            $errors[] = $uploadResult['message'];
+        }
+    }
+
     if (empty($errors)) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $db->prepare("INSERT INTO users (username, email, password_hash, first_name, last_name, role) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $username, $email, $passwordHash, $firstName, $lastName, $role);
+        $stmt = $db->prepare("INSERT INTO users (username, email, password_hash, first_name, last_name, role, profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $username, $email, $passwordHash, $firstName, $lastName, $role, $profilePicture);
         
         if ($stmt->execute()) {
-            $_SESSION['success_message'] = 'Registration successful! Please login.';
-            redirect('login.php');
+            $_SESSION['success_message'] = 'User added successfully!';
+            redirect('manage_users.php');
         } else {
-            $errors[] = 'Registration failed. Please try again.';
+            $errors[] = 'Failed to add user. Please try again.';
         }
     }
 }
 
-$pageTitle = 'Register';
-require_once 'includes/header.php';
+$pageTitle = 'Add New User';
+require_once '../../includes/header.php';
 ?>
 
-<div class="register-container">
-    <h2>Create an Account</h2>
+<div class="add-user-form">
+    <h1>Add New User</h1>
+    
     <?php if (!empty($errors)): ?>
         <div class="alert error">
             <ul>
@@ -61,11 +76,7 @@ require_once 'includes/header.php';
         </div>
     <?php endif; ?>
     
-    <?php if (isset($_SESSION['success_message'])): ?>
-        <div class="alert success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
-    <?php endif; ?>
-    
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
@@ -83,6 +94,15 @@ require_once 'includes/header.php';
             <input type="text" id="last_name" name="last_name" required>
         </div>
         <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="instructor">Instructor</option>
+                <option value="student">Student</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
@@ -90,9 +110,13 @@ require_once 'includes/header.php';
             <label for="confirm_password">Confirm Password</label>
             <input type="password" id="confirm_password" name="confirm_password" required>
         </div>
-        <button type="submit" class="btn">Register</button>
+        <div class="form-group">
+            <label for="profile_picture">Profile Picture</label>
+            <input type="file" id="profile_picture" name="profile_picture">
+        </div>
+        <button type="submit" class="btn">Add User</button>
+        <a href="manage_users.php" class="btn">Cancel</a>
     </form>
-    <p>Already have an account? <a href="login.php">Login here</a></p>
 </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once '../../includes/footer.php'; ?>

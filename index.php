@@ -1,127 +1,115 @@
 <?php
-require_once 'config.php';
-$pageTitle = "Home";
-require_once 'header.php';
+require_once 'includes/config.php';
+require_once 'includes/db_connect.php';
+require_once 'includes/functions.php';
+
+// Redirect to appropriate dashboard if logged in
+if (isLoggedIn()) {
+    redirect($_SESSION['role'] . '/dashboard.php');
+}
+
+// Get featured courses
+$db = new Database();
+$featuredCourses = $db->query("
+    SELECT c.*, u.first_name, u.last_name
+    FROM courses c
+    JOIN users u ON c.instructor_id = u.user_id
+    ORDER BY c.created_at DESC
+    LIMIT 3
+")->fetch_all(MYSQLI_ASSOC);
+
+$pageTitle = 'Welcome to ' . SITE_NAME;
+require_once 'includes/header.php';
 ?>
 
-<section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/hero-bg.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 0; text-align: center;">
+<div class="hero">
     <div class="container">
-        <h1 style="font-size: 48px; margin-bottom: 20px;">Learn Without Limits</h1>
-        <p style="font-size: 20px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Start, switch, or advance your career with more than 5,000 courses, Professional Certificates, and degrees from world-class universities and companies.</p>
-        <div style="display: flex; gap: 15px; justify-content: center;">
-            <a href="register.php" class="btn btn-primary" style="padding: 15px 30px; font-size: 18px;">Join for Free</a>
-            <a href="courses.php" class="btn btn-outline" style="padding: 15px 30px; font-size: 18px; border-color: white; color: white;">Browse Courses</a>
+        <h1>Welcome to <?php echo SITE_NAME; ?></h1>
+        <p>Your gateway to online learning and professional development</p>
+        <div class="hero-actions">
+            <?php if (!isLoggedIn()): ?>
+                <a href="register.php" class="btn btn-primary">Get Started</a>
+                <a href="login.php" class="btn btn-secondary">Login</a>
+            <?php else: ?>
+                <a href="<?php echo $_SESSION['role']; ?>/dashboard.php" class="btn btn-primary">Go to Dashboard</a>
+            <?php endif; ?>
         </div>
     </div>
-</section>
+</div>
 
-<section style="padding: 80px 0;">
+<div class="features">
     <div class="container">
-        <h2 class="text-center" style="margin-bottom: 50px;">Why Choose EduSphere?</h2>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div class="card" style="text-align: center; padding: 30px;">
-                <div style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3 style="margin-bottom: 15px;">Learn Anything</h3>
-                <p>Explore any interest or trending topic, take prerequisites, and advance your skills.</p>
+        <h2>Why Choose <?php echo SITE_NAME; ?>?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-laptop"></i>
+                <h3>Learn Anywhere</h3>
+                <p>Access your courses from any device, anytime, anywhere.</p>
             </div>
-
-            <div class="card" style="text-align: center; padding: 30px;">
-                <div style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3 style="margin-bottom: 15px;">Expert Instructors</h3>
-                <p>Learn from industry experts who are passionate about teaching.</p>
+            <div class="feature-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry professionals with real-world experience.</p>
             </div>
-
-            <div class="card" style="text-align: center; padding: 30px;">
-                <div style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3 style="margin-bottom: 15px;">Earn Certificates</h3>
-                <p>Get recognized for your work and share your success with others.</p>
+            <div class="feature-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certification</h3>
+                <p>Earn certificates to showcase your new skills.</p>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<section style="background-color: #f8f9fa; padding: 80px 0;">
+<?php if (!empty($featuredCourses)): ?>
+<div class="featured-courses">
     <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
-            <div>
-                <h2 style="margin-bottom: 20px;">Achieve your goals with EduSphere</h2>
-                <p style="margin-bottom: 20px;">Whether you want to advance your career, pursue a passion, or learn something new, EduSphere has courses to help you achieve your goals.</p>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
-                        <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 20px;"></i>
-                        <span>Learn at your own pace with flexible scheduling</span>
-                    </li>
-                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
-                        <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 20px;"></i>
-                        <span>Access to high-quality course materials</span>
-                    </li>
-                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
-                        <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 20px;"></i>
-                        <span>Interactive learning with quizzes and assignments</span>
-                    </li>
-                    <li style="display: flex; align-items: flex-start; gap: 10px;">
-                        <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 20px;"></i>
-                        <span>Connect with instructors and peers</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div>
-                <img src="assets/learning.jpg" alt="Learning" style="width: 100%; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section style="padding: 80px 0;">
-    <div class="container">
-        <div class="page-header">
-            <h2>Popular Courses</h2>
-            <a href="courses.php" class="btn btn-outline">View All Courses</a>
-        </div>
-
-        <div class="course-grid">
-            <?php
-            // Get popular courses (in a real app, you would query courses with most enrollments)
-            $courses = getAllCourses();
-            $popularCourses = array_slice($courses, 0, 4); // Just get first 4 for demo
-
-            foreach ($popularCourses as $course):
-                $instructor = getUserById($course['instructor_id']);
-                $enrollmentCount = countEnrolledStudents($course['course_id']);
-            ?>
-                <div class="card">
-                    <img src="<?php echo !empty($course['thumbnail']) ? UPLOAD_DIR . 'courses/' . $course['thumbnail'] : 'assets/course_default.png'; ?>" class="card-img-top" alt="<?php echo $course['title']; ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $course['title']; ?></h5>
-                        <p class="card-text"><?php echo substr($course['description'], 0, 100) . '...'; ?></p>
-                        <p class="text-muted mb-0"><small>By <?php echo $instructor['full_name']; ?></small></p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-users"></i> <?php echo $enrollmentCount; ?> students</span>
-                        <a href="course_details.php?id=<?php echo $course['course_id']; ?>" class="btn btn-primary btn-sm">View Course</a>
+        <h2>Featured Courses</h2>
+        <div class="courses-grid">
+            <?php foreach ($featuredCourses as $course): ?>
+                <div class="course-card">
+                    <?php if ($course['thumbnail']): ?>
+                        <img src="<?php echo SITE_URL; ?>/uploads/course_thumbnails/<?php echo $course['thumbnail']; ?>" alt="<?php echo htmlspecialchars($course['title']); ?>">
+                    <?php endif; ?>
+                    <div class="course-info">
+                        <h3><?php echo htmlspecialchars($course['title']); ?></h3>
+                        <p class="instructor">Instructor: <?php echo htmlspecialchars($course['first_name'] . ' ' . $course['last_name']); ?></p>
+                        <p class="description"><?php echo htmlspecialchars(substr($course['description'], 0, 100)); ?>...</p>
+                        <?php if (!isLoggedIn()): ?>
+                            <a href="register.php" class="btn">Enroll Now</a>
+                        <?php else: ?>
+                            <a href="courses/enroll.php?enroll=<?php echo $course['course_id']; ?>" class="btn">Enroll Now</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
+        <?php if (!isLoggedIn()): ?>
+            <div class="view-all">
+                <a href="register.php" class="btn">View All Courses</a>
+            </div>
+        <?php else: ?>
+            <div class="view-all">
+                <a href="courses/enroll.php" class="btn">View All Courses</a>
+            </div>
+        <?php endif; ?>
     </div>
-</section>
+</div>
+<?php endif; ?>
 
-<section style="background-color: var(--primary-color); color: white; padding: 80px 0; text-align: center;">
+<div class="testimonials">
     <div class="container">
-        <h2 style="margin-bottom: 20px;">Ready to start learning?</h2>
-        <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Join thousands of learners worldwide and start your learning journey today.</p>
-        <a href="register.php" class="btn btn-secondary" style="padding: 15px 30px; font-size: 18px;">Get Started</a>
+        <h2>What Our Students Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote">"This platform has transformed my learning experience. The courses are well-structured and the instructors are knowledgeable."</div>
+                <div class="author">- Sarah Johnson</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"I was able to advance my career thanks to the skills I gained from these courses. Highly recommended!"</div>
+                <div class="author">- Michael Chen</div>
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
-<?php
-require_once 'footer.php';
-?>
+<?php require_once 'includes/footer.php'; ?>
