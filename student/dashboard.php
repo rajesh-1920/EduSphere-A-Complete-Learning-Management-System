@@ -67,7 +67,7 @@ require_once '../includes/header.php';
                 <?php endforeach; ?>
             </div>
             <div class="view-all">
-                <a href="courses/my_courses.php" class="btn">View All Courses</a>
+                <a href="courses/enroll.php" class="btn">View All Courses</a>
             </div>
         <?php else: ?>
             <p>You are not enrolled in any courses yet. <a href="courses/enroll.php">Browse available courses</a></p>
