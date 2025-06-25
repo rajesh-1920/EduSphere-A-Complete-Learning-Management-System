@@ -150,7 +150,6 @@ require_once 'includes/header.php';
                             <?php else: ?>
                                 <a href="courses/enroll.php?enroll=<?php echo $course['course_id']; ?>" class="btn btn-small">Enroll Now</a>
                             <?php endif; ?>
-                            <a href="course-preview.php?id=<?php echo $course['course_id']; ?>" class="btn-text">Preview</a>
                         </div>
                     </div>
                 </div>
