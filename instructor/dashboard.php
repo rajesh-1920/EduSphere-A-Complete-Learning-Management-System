@@ -50,6 +50,20 @@ $pendingAssignments = $db->query("
     LIMIT 5
 ")->fetch_all(MYSQLI_ASSOC);
 
+// Get recent attendance records
+$recentAttendance = $db->query("
+    SELECT a.date, c.title as course_title, 
+           COUNT(CASE WHEN a.status = 'present' THEN 1 END) as present,
+           COUNT(CASE WHEN a.status = 'absent' THEN 1 END) as absent,
+           COUNT(CASE WHEN a.status = 'late' THEN 1 END) as late
+    FROM attendance a
+    JOIN courses c ON a.course_id = c.course_id
+    WHERE c.instructor_id = $instructorId
+    GROUP BY a.date, a.course_id
+    ORDER BY a.date DESC
+    LIMIT 5
+")->fetch_all(MYSQLI_ASSOC);
+
 $pageTitle = 'Instructor Dashboard';
 require_once '../includes/header.php';
 ?>
@@ -66,6 +80,11 @@ require_once '../includes/header.php';
         <div class="stat-card">
             <h3>Total Students</h3>
             <p><?php echo $totalStudents; ?></p>
+        </div>
+        <div class="stat-card">
+            <h3>Attendance</h3>
+            <p><?php echo !empty($recentAttendance) ? 'Recent records' : 'No records'; ?></p>
+            <a href="attendance/take_attendance.php">Manage</a>
         </div>
     </div>
 
@@ -87,6 +106,7 @@ require_once '../includes/header.php';
                             <td><?php echo $course['students']; ?></td>
                             <td>
                                 <a href="courses/view_course.php?id=<?php echo $course['course_id']; ?>" class="btn">View</a>
+                                <a href="attendance/take_attendance.php?course_id=<?php echo $course['course_id']; ?>" class="btn">Attendance</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -94,6 +114,43 @@ require_once '../includes/header.php';
             </table>
         <?php else: ?>
             <p>You don't have any courses yet. <a href="courses/add_course.php">Create your first course</a></p>
+        <?php endif; ?>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Recent Attendance</h2>
+        <?php if (!empty($recentAttendance)): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Course</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Late</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($recentAttendance as $record): ?>
+                        <tr>
+                            <td><?php echo formatDate($record['date']); ?></td>
+                            <td><?php echo htmlspecialchars($record['course_title']); ?></td>
+                            <td><?php echo $record['present']; ?></td>
+                            <td><?php echo $record['absent']; ?></td>
+                            <td><?php echo $record['late']; ?></td>
+                            <td>
+                                <a href="attendance/view_attendance.php?date=<?php echo $record['date']; ?>&course_id=<?php echo array_search($record['course_title'], array_column($courses, 'title')) ? $courses[array_search($record['course_title'], array_column($courses, 'title'))]['course_id'] : ''; ?>" class="btn">View</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <div class="view-all">
+                <a href="attendance/view_attendance.php" class="btn">View All Attendance</a>
+            </div>
+        <?php else: ?>
+            <p>No attendance records yet. <a href="attendance/take_attendance.php">Take attendance</a></p>
         <?php endif; ?>
     </div>
 
