@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSphere | Static Demo</title>
+    <meta name="description" content="EduSphere static showcase for GitHub Pages." />
+    <link rel="stylesheet" href="assets/css/attendence.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/form.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/announcements.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8VVQ+KQ6hJqVxA4N7N2R8p6+8h4k8wA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .demo-banner {
+        background: #f1c40f;
+        color: #2c3e50;
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin: 14px auto 0;
+        width: 90%;
+        max-width: 1200px;
+        font-weight: 600;
+      }
+
+      .section-note {
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 18px;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container" id="header-container">
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="logo"><a href="./index.html">EduSphere</a></li>
+            <div class="nav-right">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="README.md">Project Docs</a></li>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="demo-banner">
+      Static GitHub Pages Demo: Login, enrollment, quizzes, and admin/instructor/student workflows
+      need PHP + MySQL hosting and are disabled in this demo.
+    </div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Unlock Your Potential With <span>EduSphere</span></h1>
+          <p class="hero-subtitle">
+            Learn from industry experts and advance your career with comprehensive online courses.
+          </p>
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-primary">Explore Courses</a>
+            <a href="README.md" class="btn btn-outline">Read Project</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/images/hero-image.png" alt="Online Learning" />
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-count="48">0</div>
+            <div class="stat-label">Courses</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="1200">0</div>
+            <div class="stat-label">Students</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="35">0</div>
+            <div class="stat-label">Instructors</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose EduSphere?</h2>
+        <p class="section-subtitle">A practical LMS concept for collaborative learning.</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Interactive Learning</h3>
+            <p>Lessons, assignments, quizzes, and discussions in one place.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h3>Expert Instructors</h3>
+            <p>Instructor workflows for content publishing and student tracking.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+            <h3>Assessments</h3>
+            <p>Structured quizzes and assignment submissions for evaluation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <h3>Flexible Pace</h3>
+            <p>Students can access course modules and lessons anytime.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Responsive UI</h3>
+            <p>Works on desktop and mobile views.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Role-based Access</h3>
+            <p>Admin, instructor, and student panels in the full PHP version.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses" id="courses">
+      <div class="container">
+        <h2 class="section-title">Featured Courses</h2>
+        <p class="section-subtitle">Sample catalog from the EduSphere concept.</p>
+
+        <div class="courses-slider">
+          <div class="course-card">
+            <div class="course-content">
+              <div class="course-meta">
+                <span class="course-students"><i class="fas fa-users"></i> 320 students</span>
+                <span class="course-instructor"><i class="fas fa-user-tie"></i> Priya Sharma</span>
+              </div>
+              <h3 class="course-title">Web Development Fundamentals</h3>
+              <p class="course-description">
+                HTML, CSS, JavaScript basics with practical mini projects.
+              </p>
+              <div class="course-footer">
+                <a href="README.md" class="btn btn-small">View Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-content">
+              <div class="course-meta">
+                <span class="course-students"><i class="fas fa-users"></i> 210 students</span>
+                <span class="course-instructor"><i class="fas fa-user-tie"></i> Ayaan Khan</span>
+              </div>
+              <h3 class="course-title">Data Analysis with Python</h3>
+              <p class="course-description">
+                Data cleaning, visualization, and analysis workflows.
+              </p>
+              <div class="course-footer">
+                <a href="README.md" class="btn btn-small">View Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-content">
+              <div class="course-meta">
+                <span class="course-students"><i class="fas fa-users"></i> 180 students</span>
+                <span class="course-instructor"><i class="fas fa-user-tie"></i> Neha Patel</span>
+              </div>
+              <h3 class="course-title">UI/UX Design Essentials</h3>
+              <p class="course-description">
+                Design principles, wireframing, and user-centered workflows.
+              </p>
+              <div class="course-footer">
+                <a href="README.md" class="btn btn-small">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-cta">
+          <a href="README.md" class="btn btn-primary">See Full Project Scope</a>
+        </div>
+        <p class="section-note">
+          For dynamic features, deploy the original PHP app to a PHP/MySQL host.
+        </p>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Learners Say</h2>
+        <p class="section-subtitle">Feedback from the EduSphere concept community.</p>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p class="testimonial-text">
+                "Clear content structure and practical activities made learning easier."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Sarah Johnson</h4>
+                <p>Frontend Developer</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p class="testimonial-text">
+                "Role-based dashboards make academic workflows very organized."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Michael Chen</h4>
+                <p>Data Analyst</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Want the full working LMS?</h2>
+          <p>Use this static site on GitHub Pages and deploy the PHP version on a free PHP host.</p>
+          <a href="README.md" class="btn btn-primary btn-large">Deployment Notes</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const counters = document.querySelectorAll(".stat-number");
+        const speed = 200;
+
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-count");
+
+          function updateCount() {
+            const current = +counter.innerText;
+            const increment = Math.ceil(target / speed);
+            if (current < target) {
+              counter.innerText = Math.min(current + increment, target);
+              setTimeout(updateCount, 10);
+            }
+          }
+
+          updateCount();
+        });
+      });
+    </script>
+  </body>
+</html>
